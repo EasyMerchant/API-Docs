@@ -152,7 +152,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <h1 id="invoice">Invoice</h1>
 
 <h2 id="create-invoice">Create Invoice</h2>
-<pre class="highlight shell"><code>curl https://api.easymerchant.io/api/v2/invoice <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
   -d <span class="nv">customer</span><span class="o">=</span>1 <span class="se">\</span>
@@ -189,7 +189,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.easymerchant.io/api/v2/invoice</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/invoices</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -273,7 +273,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 </tbody></table>
 
 <h2 id="send-invoice">Send Invoice</h2>
-<pre class="highlight shell"><code>curl https://api.easymerchant.io/api/v2/invoice/send <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices/send <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
   -d <span class="nv">invoice_num</span><span class="o">=</span>10
@@ -294,7 +294,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.easymerchant.io/api/v2/invoice/send</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/invoices/send</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -313,7 +313,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 </tbody></table>
 
 <h2 id="charge-invoice">Charge Invoice</h2>
-<pre class="highlight shell"><code>curl https://api.easymerchant.io/api/v2/invoice/charge <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices/charge <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
   -d <span class="nv">payment_mode</span><span class="o">=</span>auth_and_capture <span class="se">\</span>
@@ -336,7 +336,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.easymerchant.io/api/v2/invoice/charge</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/invoices/charge</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -395,7 +395,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 </tbody></table>
 
 <h2 id="capture-invoice">Capture Invoice</h2>
-<pre class="highlight shell"><code>curl https://api.easymerchant.io/api/v2/invoice/capture <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices/capture <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
   -d <span class="nv">invoice_num</span><span class="o">=</span>30
@@ -420,7 +420,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.easymerchant.io/api/v2/invoice/capture</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/invoices/capture</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -439,7 +439,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 </tbody></table>
 
 <h2 id="refund">Refund</h2>
-<pre class="highlight shell"><code>curl https://api.easymerchant.io/api/v2/invoice/refund <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices/refund <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
   -d <span class="nv">charge_id</span><span class="o">=</span><span class="s1">'1gd5UB0o5NJGO1rgAoygm'</span> <span class="se">\</span>
@@ -464,7 +464,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.easymerchant.io/api/v2/invoice/refund</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/invoices/refund</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -490,7 +490,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <h1 id="direct-payment">Direct Payment</h1>
 
 <h2 id="create-charge">Create Charge</h2>
-<pre class="highlight shell"><code>curl https://api.easymerchant.io/api/v2/charge <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/charges <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
   -d <span class="nv">name</span><span class="o">=</span><span class="s1">'Jim'</span> <span class="se">\</span>
@@ -529,7 +529,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.easymerchant.io/api/v2/charge</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/charges</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -623,7 +623,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 </tbody></table>
 
 <h2 id="capture-charge">Capture Charge</h2>
-<pre class="highlight shell"><code>curl https://api.easymerchant.io/api/v2/capture <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/capture <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
   -d <span class="nv">invoice_num</span><span class="o">=</span>30
@@ -648,7 +648,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.easymerchant.io/api/v2/capture</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/capture</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -667,7 +667,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 </tbody></table>
 
 <h2 id="refund">Refund</h2>
-<pre class="highlight shell"><code>curl https://api.easymerchant.io/api/v2/refund <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/refunds <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
   -d <span class="nv">charge_id</span><span class="o">=</span><span class="s1">'1gd5UB0o5NJGO1rgAoygm'</span> <span class="se">\</span>
@@ -692,7 +692,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.easymerchant.io/api/v2/refund</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/refunds</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -718,7 +718,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <h1 id="customer">Customer</h1>
 
 <h2 id="create-customer">Create Customer</h2>
-<pre class="highlight shell"><code>curl https://api.easymerchant.io/api/v2/customer <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/customers <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
   -d <span class="nv">name</span><span class="o">=</span><span class="s1">'Jim'</span> <span class="se">\</span>
@@ -747,7 +747,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST https://api.easymerchant.io/api/v2/customer</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/customers</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
