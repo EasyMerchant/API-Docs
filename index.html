@@ -155,21 +155,21 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
-  -d <span class="nv">customer</span><span class="o">=</span>1 <span class="se">\</span>
-  -d <span class="nv">description</span><span class="o">=</span><span class="s1">'test description'</span> <span class="se">\</span>
-  -d <span class="nv">date_due</span><span class="o">=</span><span class="s1">'08/12/2017'</span> <span class="se">\</span>
-  -d <span class="nv">payment_type</span><span class="o">=</span><span class="s1">'one_time'</span> <span class="se">\</span>
-  -d items[]<span class="o">=</span><span class="s1">'apple'</span> <span class="se">\</span>
-  -d items_price[]<span class="o">=</span>20 <span class="se">\</span>
-  -d items[]<span class="o">=</span><span class="s1">'orange'</span> <span class="se">\</span>
-  -d items_price[]<span class="o">=</span>18 <span class="se">\</span>
-  -d <span class="nv">send_email</span><span class="o">=</span>1 <span class="se">\</span>
-  -d <span class="nv">payment_mode</span><span class="o">=</span>auth_and_capture <span class="se">\</span>
-  -d <span class="nv">cardholder_name</span><span class="o">=</span><span class="s1">'Jim'</span> <span class="se">\</span>
-  -d <span class="nv">card_number</span><span class="o">=</span>4242424242424242 <span class="se">\</span>
-  -d <span class="nv">exp_month</span><span class="o">=</span>12 <span class="se">\</span>
-  -d <span class="nv">exp_year</span><span class="o">=</span>2020 <span class="se">\</span>
-  -d <span class="nv">cvc</span><span class="o">=</span>123
+  --form <span class="nv">'customer'</span><span class="o">=</span>1 <span class="se">\</span>
+  --form <span class="nv">'description'</span><span class="o">=</span><span class="s1">"test description"</span> <span class="se">\</span>
+  --form <span class="nv">'date_due'</span><span class="o">=</span><span class="s1">"08/12/2017"</span> <span class="se">\</span>
+  --form <span class="nv">'payment_type'</span><span class="o">=</span><span class="s1">"one_time"</span> <span class="se">\</span>
+  --form 'items[]'<span class="o">=</span><span class="s1">"apple"</span> <span class="se">\</span>
+  --form 'items_price[]'<span class="o">=</span>20 <span class="se">\</span>
+  --form 'items[]'<span class="o">=</span><span class="s1">"orange"</span> <span class="se">\</span>
+  --form 'items_price[]'<span class="o">=</span>18 <span class="se">\</span>
+  --form <span class="nv">'send_now'</span><span class="o">=</span>"yes" <span class="se">\</span>
+  --form <span class="nv">'payment_mode'</span><span class="o">=</span>auth_and_capture <span class="se">\</span>
+  --form <span class="nv">'cardholder_name'</span><span class="o">=</span><span class="s1">"Jim"</span> <span class="se">\</span>
+  --form <span class="nv">'card_number'</span><span class="o">=</span>"4111111111111111" <span class="se">\</span>
+  --form <span class="nv">'exp_month'</span><span class="o">=</span>"12" <span class="se">\</span>
+  --form <span class="nv">'exp_year'</span><span class="o">=</span>"2020" <span class="se">\</span>
+  --form <span class="nv">'cvc'</span><span class="o">=</span>"123"
 </code></pre>
 
 <blockquote>
@@ -276,7 +276,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices/send <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
-  -d <span class="nv">invoice_num</span><span class="o">=</span>10
+  --form <span class="nv">'invoice_num'</span><span class="o">=</span>"10"
 </code></pre>
 
 <blockquote>
@@ -313,11 +313,18 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 </tbody></table>
 
 <h2 id="charge-invoice">Charge Invoice</h2>
-<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices/charge <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/charges <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
-  -d <span class="nv">payment_mode</span><span class="o">=</span>auth_and_capture <span class="se">\</span>
-  -d <span class="nv">invoice_num</span><span class="o">=</span>30
+  --form <span class="nv">'invoice_num'</span><span class="o">=</span>"30" <span class="se">\</span>
+  --form <span class="nv">'payment_mode'</span><span class="o">=</span>"auth_and_capture" <span class="se">\</span>
+  --form <span class="nv">'currency'</span><span class="o">=</span><span class="s1">"usd"</span> <span class="se">\</span>
+  --form <span class="nv">'cardholder_name'</span><span class="o">=</span><span class="s1">"Jim"</span> <span class="se">\</span>
+  --form <span class="nv">'card_number'</span><span class="o">=</span>"4111111111111111" <span class="se">\</span>
+  --form <span class="nv">'exp_month'</span><span class="o">=</span>"2" <span class="se">\</span>
+  --form <span class="nv">'exp_year'</span><span class="o">=</span>"2022" <span class="se">\</span>
+  --form <span class="nv">'cvc'</span><span class="o">=</span>"123"
+  --form <span class="nv">'save_card'</span><span class="o">=</span>"1"
 </code></pre>
 
 <blockquote>
@@ -328,6 +335,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
     </span><span class="nt">"status"</span><span class="p">:</span><span class="kc">true</span><span class="p">,</span><span class="w">
     </span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"payment processed successfully"</span><span class="p">,</span><span class="w">
     </span><span class="nt">"charge_id"</span><span class="p">:</span><span class="s2">"8ac9l0o54KJGsDhK3gmCU"</span><span class="w">
+    </span><span class="nt">"card_id"</span><span class="p">:</span><span class="s2">"card_6138c78a7e46d"</span><span class="w">
+    </span><span class="nt">"card_last_4"</span><span class="p">:</span><span class="s2">"1111"</span><span class="w">
   </span><span class="p">}</span><span class="w">
 </span><span class="p">]</span><span class="w">
 </span></code></pre>
@@ -336,7 +345,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/invoices/charge</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/charges</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -392,13 +401,21 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <td>usd</td>
 <td>Only allowed currency is usd</td>
 </tr>
+<tr>
+<td>save_card [optional]</td>
+<td>1</td>
+<td>save card for later usage</td>
+</tr>
+<td>card_id [optional]</td>
+<td>1</td>
+<td>charge using already saved card</td>
+</tr>
 </tbody></table>
 
 <h2 id="capture-invoice">Capture Invoice</h2>
-<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices/capture <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/charges/cha_6138c9e87805b5064/capture <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
-  -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
-  -d <span class="nv">invoice_num</span><span class="o">=</span>30
+  -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span>
 </code></pre>
 
 <blockquote>
@@ -420,7 +437,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/invoices/capture</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/charges/{charge_id}/capture</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -439,11 +456,11 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 </tbody></table>
 
 <h2 id="refund">Refund</h2>
-<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/invoices/refund <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/refunds <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
-  -d <span class="nv">charge_id</span><span class="o">=</span><span class="s1">'1gd5UB0o5NJGO1rgAoygm'</span> <span class="se">\</span>
-  -d <span class="nv">amount</span><span class="o">=</span>10
+  --form <span class="nv">'charge_id'</span><span class="o">=</span><span class="s1">"1gd5UB0o5NJGO1rgAoygm"</span> <span class="se">\</span>
+  --form <span class="nv">'amount'</span><span class="o">=</span>"10"
 </code></pre>
 
 <blockquote>
@@ -464,7 +481,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/invoices/refund</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/refunds</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -493,24 +510,24 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/charges <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
-  -d <span class="nv">name</span><span class="o">=</span><span class="s1">'Jim'</span> <span class="se">\</span>
-  -d <span class="nv">email</span><span class="o">=</span><span class="s1">'jim@easymerchant.io'</span> <span class="se">\</span>
-  -d <span class="nv">amount</span><span class="o">=</span>100 <span class="se">\</span>
-  -d <span class="nv">authorize_now</span><span class="o">=</span>1 <span class="se">\</span>
-  -d <span class="nv">pay_later</span><span class="o">=</span>1 <span class="se">\</span>
-  -d <span class="nv">payment_mode</span><span class="o">=</span>auth_and_capture <span class="se">\</span>
-  -d <span class="nv">currency</span><span class="o">=</span><span class="s1">'usd'</span> <span class="se">\</span>
-  -d <span class="nv">address</span><span class="o">=</span><span class="s1">'my address here'</span> <span class="se">\</span>
-  -d <span class="nv">city</span><span class="o">=</span><span class="s1">'nashville'</span> <span class="se">\</span>
-  -d <span class="nv">zip</span><span class="o">=</span>37251 <span class="se">\</span>
-  -d <span class="nv">state</span><span class="o">=</span><span class="s1">'TN'</span> <span class="se">\</span>
-  -d <span class="nv">country</span><span class="o">=</span><span class="s1">'US'</span>
-  -d <span class="nv">description</span><span class="o">=</span><span class="s1">'first payment'</span> <span class="se">\</span>
-  -d <span class="nv">cardholder_name</span><span class="o">=</span><span class="s1">'Jim'</span> <span class="se">\</span>
-  -d <span class="nv">card_number</span><span class="o">=</span>4242424242424242 <span class="se">\</span>
-  -d <span class="nv">exp_month</span><span class="o">=</span>12 <span class="se">\</span>
-  -d <span class="nv">exp_year</span><span class="o">=</span>2020 <span class="se">\</span>
-  -d <span class="nv">cvc</span><span class="o">=</span>123
+  --form <span class="nv">'name'</span><span class="o">=</span><span class="s1">"Jim"</span> <span class="se">\</span>
+  --form <span class="nv">'email'</span><span class="o">=</span><span class="s1">"jim@easymerchant.io"</span> <span class="se">\</span>
+  --form <span class="nv">'amount'</span><span class="o">=</span>"100" <span class="se">\</span>
+  --form <span class="nv">'authorize_now'</span><span class="o">=</span>"1" <span class="se">\</span>
+  --form <span class="nv">'pay_later'</span><span class="o">=</span>"1" <span class="se">\</span>
+  --form <span class="nv">'payment_mode'</span><span class="o">=</span>"auth_and_capture" <span class="se">\</span>
+  --form <span class="nv">'currency'</span><span class="o">=</span><span class="s1">"usd"</span> <span class="se">\</span>
+  --form <span class="nv">'address'</span><span class="o">=</span><span class="s1">"my address here"</span> <span class="se">\</span>
+  --form <span class="nv">'city'</span><span class="o">=</span><span class="s1">"nashville"</span> <span class="se">\</span>
+  --form <span class="nv">'zip'</span><span class="o">=</span>"37251" <span class="se">\</span>
+  --form <span class="nv">'state'</span><span class="o">=</span><span class="s1">"TN"</span> <span class="se">\</span>
+  --form <span class="nv">'country'</span><span class="o">=</span><span class="s1">"US"</span> <span class="se">\</span>
+  --form <span class="nv">'description'</span><span class="o">=</span><span class="s1">"first payment"</span> <span class="se">\</span>
+  --form <span class="nv">'cardholder_name'</span><span class="o">=</span><span class="s1">"Jim"</span> <span class="se">\</span>
+  --form <span class="nv">'card_number'</span><span class="o">=</span>"4111111111111111" <span class="se">\</span>
+  --form <span class="nv">'exp_month'</span><span class="o">=</span>"12" <span class="se">\</span>
+  --form <span class="nv">'exp_year'</span><span class="o">=</span>"2020" <span class="se">\</span>
+  --form <span class="nv">'cvc'</span><span class="o">=</span>"123"
 </code></pre>
 
 <blockquote>
@@ -623,10 +640,9 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 </tbody></table>
 
 <h2 id="capture-charge">Capture Charge</h2>
-<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/capture <span class="se">\</span>
+<pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/charges/cha_6138cee24c7e65064/capture <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
-  -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
-  -d <span class="nv">invoice_num</span><span class="o">=</span>30
+  -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span>
 </code></pre>
 
 <blockquote>
@@ -648,7 +664,7 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 
 <h3 id="http-request">HTTP Request</h3>
 
-<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/capture</code></p>
+<p><code class="prettyprint">POST http://api.easymerchant.io/api/v1/charges/cha_6138cee24c7e65064/capture</code></p>
 
 <h3 id="query-parameters">Query Parameters</h3>
 
@@ -670,8 +686,8 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/refunds <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
-  -d <span class="nv">charge_id</span><span class="o">=</span><span class="s1">'1gd5UB0o5NJGO1rgAoygm'</span> <span class="se">\</span>
-  -d <span class="nv">amount</span><span class="o">=</span>10
+  --form <span class="nv">'charge_id'</span><span class="o">=</span><span class="s1">"1gd5UB0o5NJGO1rgAoygm"</span> <span class="se">\</span>
+  --form <span class="nv">'amount'</span><span class="o">=</span>"10"
 </code></pre>
 
 <blockquote>
@@ -721,14 +737,20 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <pre class="highlight shell"><code>curl --location --request POST http://api.easymerchant.io/api/v1/customers <span class="se">\</span>
   -H <span class="s2">"X-Api-Key: meowmeowmeow"</span> <span class="se">\</span>
   -H <span class="s2">"X-Api-Secret: meowmeowmeow"</span> <span class="se">\</span>
-  -d <span class="nv">name</span><span class="o">=</span><span class="s1">'Jim'</span> <span class="se">\</span>
-  -d <span class="nv">username</span><span class="o">=</span><span class="s1">'jim123'</span> <span class="se">\</span>
-  -d <span class="nv">email</span><span class="o">=</span><span class="s1">'jim@easymerchant.io'</span> <span class="se">\</span>
-  -d <span class="nv">address</span><span class="o">=</span><span class="s1">'my address here'</span> <span class="se">\</span>
-  -d <span class="nv">city</span><span class="o">=</span><span class="s1">'nashville'</span> <span class="se">\</span>
-  -d <span class="nv">zip</span><span class="o">=</span>37251 <span class="se">\</span>
-  -d <span class="nv">state</span><span class="o">=</span><span class="s1">'TN'</span> <span class="se">\</span>
-  -d <span class="nv">country</span><span class="o">=</span><span class="s1">'US'</span>
+  --form <span class="nv">'name'</span><span class="o">=</span><span class="s1">"Jim"</span> <span class="se">\</span>
+  --form <span class="nv">'username'</span><span class="o">=</span><span class="s1">"jim123"</span> <span class="se">\</span>
+  --form <span class="nv">'email'</span><span class="o">=</span><span class="s1">"jim@easymerchant.io"</span> <span class="se">\</span>
+  --form <span class="nv">'address'</span><span class="o">=</span><span class="s1">"my address here"</span> <span class="se">\</span>
+  --form <span class="nv">'city'</span><span class="o">=</span><span class="s1">"nashville"</span> <span class="se">\</span>
+  --form <span class="nv">'zip'</span><span class="o">=</span>37251 <span class="se">\</span>
+  --form <span class="nv">'state'</span><span class="o">=</span><span class="s1">"TN"</span> <span class="se">\</span>
+  --form <span class="nv">'country'</span><span class="o">=</span><span class="s1">"US"</span> <span class="se">\</span>
+  --form <span class="nv">'save_card'</span><span class="o">=</span>"1" <span class="se">\</span>
+  --form <span class="nv">'cardholder_name'</span><span class="o">=</span><span class="s1">"Jim"</span> <span class="se">\</span>
+  --form <span class="nv">'card_number'</span><span class="o">=</span>"4111111111111111" <span class="se">\</span>
+  --form <span class="nv">'exp_month'</span><span class="o">=</span>"2" <span class="se">\</span>
+  --form <span class="nv">'exp_year'</span><span class="o">=</span>"2022" <span class="se">\</span>
+  --form <span class="nv">'cvc'</span><span class="o">=</span>"123"
 </code></pre>
 
 <blockquote>
@@ -797,6 +819,35 @@ You must replace <code>meowmeowmeow</code> with your personal API key and API se
 <td>country [required]</td>
 <td>none</td>
 <td>2-letter country code</td>
+</tr>
+<tr>
+<td>save_card [optional]</td>
+<td>1</td>
+<td>save card for later usage</td>
+</tr>
+<td>cardholder_name [optional]</td>
+<td>none</td>
+<td>Actual cardholder name</td>
+</tr>
+<tr>
+<td>card_number [optional]</td>
+<td>none</td>
+<td>The card number, as a string, without any separators.</td>
+</tr>
+<tr>
+<td>exp_month [optional]</td>
+<td>none</td>
+<td>Two digit number representing the card&rsquo;s expiration month.</td>
+</tr>
+<tr>
+<td>exp_year [optional]</td>
+<td>none</td>
+<td>Two or four digit number representing the card&rsquo;s expiration year.</td>
+</tr>
+<tr>
+<td>cvc [optional]</td>
+<td>none</td>
+<td>Card security code</td>
 </tr>
 </tbody></table>
 
